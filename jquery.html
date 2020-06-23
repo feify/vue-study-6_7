@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <script src="./jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input id="input" type="text"/>
+    <button id="btn">提交</button>
+    <ul id="list">
+    </ul>
+</div>
+<script>
+    function Page(){
+
+    }
+    $.extend(Page.prototype,{
+        init:function () {
+            this.bindEvents()
+        },
+        bindEvents:function () {
+            var btn = $('#btn');
+            btn.on('click',$.proxy(this.handleBtnClick,this));
+        },
+        handleBtnClick:function () {
+            var inputElem = $('#input');
+            var inputValue = inputElem.val();
+            var inputValue = $('#input').val();
+            var ulElem = $('#list');
+            ulElem.append('<li>'+inputValue+'</li>');
+            inputElem.val('');
+            //提高性能
+        }
+    });
+    var page = new Page();
+    page.init();
+    // 面向对象jquery
+</script>
+</body>
+</html>
